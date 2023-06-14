@@ -10,7 +10,7 @@ part of 'app_api.dart';
 
 class _AppServiceClient implements AppServiceClient {
   _AppServiceClient(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'http://demo.misoft.ca/service/api/CustomerV1/';
+    baseUrl ??= 'https://demo.misoft.ca/service/api/V1/';
   }
 
   final Dio _dio;

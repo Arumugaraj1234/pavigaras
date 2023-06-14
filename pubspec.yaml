@@ -54,6 +54,9 @@ dependencies:
   carousel_slider: ^4.1.1
   shimmer: ^2.0.0
   flutter_rating_bar: ^4.0.1
+  badges: ^3.0.2
+  awesome_select: ^6.0.0
+  geolocator: ^9.0.2
 
 dev_dependencies:
   flutter_test:
@@ -96,6 +99,8 @@ flutter:
     - assets/images/ic_best_seller.png
     - assets/images/location_icon.png
     - assets/images/bottom_home_ic.png
+    - assets/images/cash_icon.png
+    - assets/images/pay_online_icon.png
 
   fonts:
     - family: CircularStd

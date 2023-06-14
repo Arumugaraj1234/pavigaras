@@ -1,7 +1,7 @@
 import 'package:pavigaras/domain/model/model.dart';
 
 class AppConstants {
-  static const String baseUrl = "http://demo.misoft.ca/service/api/CustomerV1/";
+  static const String baseUrl = "https://demo.misoft.ca/service/api/V1/";
   static const String applicationJson = "application/json";
   static const String contentType = "content-type";
   static const String accept = "accept";

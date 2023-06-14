@@ -37,4 +37,31 @@ class AppStrings {
   static const String outOfStocks = "Out of Stocks";
   static const String notifyIfAvailable = "NOTIFY IF AVAILABLE";
   static const String description = "Description: ";
+  static String currencySymbol = String.fromCharCodes(Runes('\u20B9'));
+  static const String paymentMethod = "Payment Method";
+  static const String paymentMethodPlaceHolder = "Choose your payment method";
+  static const String kitchenAvailableOn = 'Kitchen available on';
+  static const String postalCodeHint = "Postal Code";
+  static const String postalCodeError = "Invalid postal code";
+  static const String noAddressAvailable = "No Delivery Address available";
+  static const String noDeliveryAddressMessage =
+      "Seems like you haven't added any delivery address. Please add delivery address to continue booking";
+  static const String enableLocationService =
+      "Please enable the location service";
+  static const String locationPermission = "Please provide location permission";
+  static const String cancel = "Cancel";
+  static const String canNotGetAccess = "Can't get current location access";
+  static const String setDeliveryLocation = "Set delivery location";
+  static const String confirmLocation = "Confirm Location";
+  static const String houseNo = "HOUSE / FLAT / BLOCK NO. / APARTMENT, ETC.";
+  static const String searchLocation = "Search Location";
+  static const String fillForm = "Fill Form";
+  static const String fillAddress = "Fill Address";
+  static const String address = "Address";
+  static const String addressError = "Invalid address";
+  static const String city = "City";
+  static const String county = "County";
+  static const String landMark = "Land Mark";
+  static const String addresses = "Addresses";
+  static const String proceed = "Proceed";
 }

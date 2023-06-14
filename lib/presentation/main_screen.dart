@@ -22,7 +22,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _tabList = [
     const HomeView(),
     const SearchView(),
-    const CartView(),
+    const CartView(1),
     const ProfileView(),
   ];
 

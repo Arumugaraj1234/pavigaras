@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 class ColorManager {
   static Color primary = HexColor.fromHex("#189AB4");
   static Color darkPrimary = HexColor.fromHex("#05445E");
+  static Color darkPrimaryOpacity50 = HexColor.fromHex("#8005445E");
   static Color primaryOpacity70 = HexColor.fromHex("#B3189AB4");
   static Color blueGreen = HexColor.fromHex("#75E6DA");
   static Color babyBlue = HexColor.fromHex("#D4F1F4");

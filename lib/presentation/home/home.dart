@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pavigaras/app/constants.dart';
 import 'package:pavigaras/app/di.dart';
 import 'package:pavigaras/app/enumerations.dart';
+import 'package:pavigaras/app/extentions.dart';
 import 'package:pavigaras/data/network/error_handler.dart';
 import 'package:pavigaras/domain/model/model.dart';
 import 'package:pavigaras/presentation/home/header_search_bar.dart';
@@ -283,7 +284,10 @@ class _HomeViewState extends State<HomeView> {
             shrinkWrap: true,
             itemBuilder: (BuildContext context, int index) {
               var product = popular[index];
-              return PopularProductCard(product, () {});
+              return PopularProductCard(product, () {
+                Navigator.of(context)
+                    .pushNamed(Routes.specialProductRoute, arguments: product);
+              });
             },
           )),
     );
@@ -300,7 +304,10 @@ class _HomeViewState extends State<HomeView> {
             shrinkWrap: true,
             itemBuilder: (BuildContext context, int index) {
               var product = favorites[index];
-              return PopularProductCard(product, () {});
+              return PopularProductCard(product, () {
+                Navigator.of(context)
+                    .pushNamed(Routes.specialProductRoute, arguments: product);
+              });
             },
           )),
     );
@@ -318,7 +325,10 @@ class _HomeViewState extends State<HomeView> {
             shrinkWrap: true,
             itemBuilder: (BuildContext context, int index) {
               var product = todayOffers[index];
-              return OfferProductCard(product, () {});
+              return OfferProductCard(product, () {
+                Navigator.of(context)
+                    .pushNamed(Routes.specialProductRoute, arguments: product);
+              });
             },
           )),
     );
@@ -492,7 +502,7 @@ class PopularProductCard extends StatelessWidget {
                           color: ColorManager.blueGreen,
                           child: Text(
                             AppConstants.indianRupeeSymbol +
-                                product.sellingRate.toStringAsFixed(2),
+                                product.sellingRate.stringValue,
                             style: getBoldStyle(fontSize: FontSize.f12),
                           ),
                         ),
@@ -593,12 +603,12 @@ class OfferProductCard extends StatelessWidget {
                               text: TextSpan(children: [
                             TextSpan(
                                 text: AppConstants.indianRupeeSymbol +
-                                    product.sellingRate.toStringAsFixed(2) +
+                                    product.sellingRate.stringValue +
                                     " ",
                                 style: getBoldStyle(fontSize: FontSize.f12)),
                             TextSpan(
                                 text: AppConstants.indianRupeeSymbol +
-                                    product.actualRate.toStringAsFixed(2),
+                                    product.actualRate.stringValue,
                                 style: getRegularStyle(fontSize: FontSize.f10)
                                     .copyWith(
                                         decoration: TextDecoration.lineThrough,

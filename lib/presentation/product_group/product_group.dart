@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pavigaras/domain/model/model.dart';
 import 'package:pavigaras/presentation/resources/colors_manager.dart';
 import 'package:pavigaras/presentation/resources/font_manager.dart';
+import 'package:pavigaras/presentation/resources/routes_manager.dart';
 import 'package:pavigaras/presentation/resources/styles_manager.dart';
 import 'package:pavigaras/presentation/resources/values_manager.dart';
 
@@ -18,6 +19,7 @@ class _ProductGroupViewState extends State<ProductGroupView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorManager.white,
       appBar: PreferredSize(
         child: Padding(
           padding: EdgeInsets.only(
@@ -65,31 +67,54 @@ class _ProductGroupViewState extends State<ProductGroupView> {
   }
 
   _content(BuildContext context) {
-    ProductGroup productGroup = widget.category.productGroups[0];
+    List<ProductGroup> productGroups = widget.category.productGroups;
     double screenWidth = MediaQuery.of(context).size.width;
     double cardWidth = (screenWidth - 40) / 3;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: SizedBox(
-        height: cardWidth + 40,
-        width: cardWidth,
-        child: Card(
-          color: ColorManager.babyBlue,
-          child: Column(
-            children: [
-              Container(
-                height: cardWidth,
-                decoration: BoxDecoration(
-                    color: ColorManager.white,
-                    image: DecorationImage(
-                        image: NetworkImage(productGroup.imageLink),
-                        fit: BoxFit.contain)),
-              ),
-              Expanded(child: Center(child: Text(productGroup.name)))
-            ],
-          ),
+
+    return GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
         ),
-      ),
-    );
+        itemCount: productGroups.length,
+        itemBuilder: (_, i) {
+          ProductGroup productGroup = productGroups[i];
+          return GestureDetector(
+            onTap: () {
+              Navigator.of(context)
+                  .pushNamed(Routes.productRoute, arguments: productGroup);
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 1, vertical: 1),
+              child: Card(
+                color: ColorManager.babyBlue,
+                child: SizedBox(
+                  height: cardWidth + 40,
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: ColorManager.white,
+                              image: DecorationImage(
+                                  image: NetworkImage(productGroup.imageLink),
+                                  fit: BoxFit.contain)),
+                        ),
+                      ),
+                      SizedBox(
+                          height: 30,
+                          child: Center(
+                            child: Text(
+                              productGroup.name,
+                              textAlign: TextAlign.center,
+                              style: getLightStyle(fontSize: FontSize.f12),
+                            ),
+                          ))
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
+        });
   }
 }

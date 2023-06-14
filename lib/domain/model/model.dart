@@ -75,6 +75,20 @@ class Product {
   int percentageOff() {
     return (((actualRate - sellingRate) / actualRate) * 100).toInt();
   }
+
+  String get hintsToSearch {
+    String nameWithNoSpace = name.replaceAll(" ", "");
+    String descriptionWithNoSpace = description.replaceAll(" ", "");
+    String n = name.toLowerCase() +
+        name.toUpperCase() +
+        nameWithNoSpace.toLowerCase() +
+        nameWithNoSpace.toUpperCase();
+    String d = description.toLowerCase() +
+        description.toUpperCase() +
+        descriptionWithNoSpace.toLowerCase() +
+        descriptionWithNoSpace.toUpperCase();
+    return n + d;
+  }
 }
 
 class ProductGroup {
@@ -117,4 +131,73 @@ class GetProducts {
 
   GetProducts(this.status, this.message, this.shops, this.offerProducts,
       this.popularProducts, this.favoriteProducts);
+}
+
+class PaymentType {
+  int id;
+  String title;
+  String imageName;
+
+  PaymentType(this.id, this.title, this.imageName);
+}
+
+class DeliveryAddress {
+  int addressId;
+  String fullAddress;
+  String postalCode;
+  double latitude;
+  double longitude;
+
+  DeliveryAddress(this.addressId, this.fullAddress, this.postalCode,
+      this.latitude, this.longitude);
+}
+
+class GetAllDeliveryAddresses {
+  int status;
+  String message;
+  List<DeliveryAddress>? addresses;
+
+  GetAllDeliveryAddresses(this.status, this.message, this.addresses);
+}
+
+class GoogleAddress {
+  double latitude;
+  double longitude;
+  String formattedAddress;
+  String streetNoShort;
+  String streetNoLong;
+  String streetNameShort;
+  String streetNameLong;
+  String cityNameShort;
+  String cityNameLong;
+  String provinceNameShort;
+  String provinceNameLong;
+  String countryNameShort;
+  String countryNameLong;
+  String postalCodeShort;
+  String postalCodeLong;
+
+  GoogleAddress(
+      this.latitude,
+      this.longitude,
+      this.formattedAddress,
+      this.streetNoShort,
+      this.streetNoLong,
+      this.streetNameShort,
+      this.streetNameLong,
+      this.cityNameShort,
+      this.cityNameLong,
+      this.provinceNameShort,
+      this.provinceNameLong,
+      this.countryNameShort,
+      this.countryNameLong,
+      this.postalCodeShort,
+      this.postalCodeLong);
+}
+
+class UpdateAddress {
+  int status;
+  String message;
+
+  UpdateAddress(this.status, this.message);
 }

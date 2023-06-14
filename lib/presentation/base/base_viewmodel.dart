@@ -5,12 +5,17 @@ import 'package:rxdart/rxdart.dart';
 
 abstract class BaseViewModel extends BaseViewModelInputs
     with BaseViewModelOutputs {
-  final _inputStateStreamController = BehaviorSubject<FlowState>();
+  final _stateStreamController = BehaviorSubject<FlowState>();
 
   @override
   dispose() {
-    _inputStateStreamController.close();
+    _stateStreamController.close();
   }
+
+  //INPUT POP UP STATE
+
+  @override
+  Sink<FlowState> get inputState => _stateStreamController.sink;
 
   @override
   hideState() {
@@ -34,17 +39,43 @@ abstract class BaseViewModel extends BaseViewModelInputs
     inputState.add(FlowState(StateRendererType.popUpSuccess, message, title));
   }
 
+  // INPUT FULL SCREEN STATE
+
+  @override
+  Sink<FlowState> get inputFullScreenState => _stateStreamController.sink;
+
   @override
   void fullScreenErrorState(String message) {
-    inputState.add(FlowState(StateRendererType.fullScreenError, message, null));
+    inputFullScreenState
+        .add(FlowState(StateRendererType.fullScreenError, message, null));
   }
 
   @override
-  Sink<FlowState> get inputState => _inputStateStreamController.sink;
+  void fullScreenLoadingState(String message) {
+    inputFullScreenState
+        .add(FlowState(StateRendererType.fullScreenLoading, message, null));
+  }
+
+  @override
+  void fullScreenEmptyState(String message) {
+    inputFullScreenState
+        .add(FlowState(StateRendererType.emptyScreen, message, null));
+  }
+
+  @override
+  void hideFullScreenState() {
+    inputFullScreenState.add(FlowState(StateRendererType.content, "", null));
+  }
+
+  //OUTPUT STATE
 
   @override
   Stream<FlowState> get outputState =>
-      _inputStateStreamController.stream.map((flowState) => flowState);
+      _stateStreamController.stream.map((flowState) => flowState);
+
+  @override
+  Stream<FlowState> get outputFullScreenState =>
+      _stateStreamController.stream.map((flowState) => flowState);
 }
 
 abstract class BaseViewModelInputs {
@@ -55,10 +86,15 @@ abstract class BaseViewModelInputs {
   void popUpErrorState(String message);
   void popUpSuccessState(String title, String message);
   void fullScreenErrorState(String message);
+  void fullScreenLoadingState(String message);
+  void fullScreenEmptyState(String message);
+  void hideFullScreenState();
 
   Sink<FlowState> get inputState;
+  Sink<FlowState> get inputFullScreenState;
 }
 
 abstract class BaseViewModelOutputs {
   Stream<FlowState> get outputState;
+  Stream<FlowState> get outputFullScreenState;
 }

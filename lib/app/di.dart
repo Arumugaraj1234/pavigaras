@@ -10,11 +10,16 @@ import 'package:pavigaras/domain/repository/repository.dart';
 import 'package:pavigaras/domain/usecase/get_products_usecase.dart';
 import 'package:pavigaras/domain/usecase/init_usecase.dart';
 import 'package:pavigaras/domain/usecase/request_otp_usecase.dart';
+import 'package:pavigaras/presentation/addresses/addresses_viewmodel.dart';
 import 'package:pavigaras/presentation/home/home_viewmodel.dart';
 import 'package:pavigaras/presentation/request_otp/request_otp_viewmodel.dart';
+import 'package:pavigaras/presentation/search/search_viewmodel.dart';
+import 'package:pavigaras/presentation/shops/shops_viewmodel.dart';
 import 'package:pavigaras/presentation/splash/splash_viewmodel.dart';
 import 'package:pavigaras/presentation/verify_otp/verify_otp_viewmodel.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../presentation/cart/cart_viewmodel.dart';
 
 final instance = GetIt.instance;
 
@@ -81,6 +86,22 @@ initVerifyOtpModule() {
   }
 }
 
+void initShopsModule() {
+  bool isGetProductsUseCaseRegistered =
+      GetIt.I.isRegistered<GetProductsUseCase>();
+
+  if (!isGetProductsUseCaseRegistered) {
+    instance.registerFactory<GetProductsUseCase>(
+        () => GetProductsUseCase(instance()));
+  }
+
+  bool isShopsViewModelRegistered = GetIt.I.isRegistered<ShopsViewModel>();
+  if (!isShopsViewModelRegistered) {
+    instance.registerFactory<ShopsViewModel>(
+        () => ShopsViewModel(instance(), instance()));
+  }
+}
+
 initHomeModule() {
   bool isGetProductsUseCaseRegistered =
       GetIt.I.isRegistered<GetProductsUseCase>();
@@ -94,5 +115,39 @@ initHomeModule() {
   if (!isHomeViewModelRegistered) {
     instance.registerFactory<HomeViewModel>(
         () => HomeViewModel(instance(), instance()));
+  }
+}
+
+void initSearchModule() {
+  bool isGetProductsUseCaseRegistered =
+      GetIt.I.isRegistered<GetProductsUseCase>();
+
+  if (!isGetProductsUseCaseRegistered) {
+    instance.registerFactory<GetProductsUseCase>(
+        () => GetProductsUseCase(instance()));
+  }
+
+  bool isSearchViewModelRegistered =
+      GetIt.I.isRegistered<SearchItemViewModel>();
+
+  if (!isSearchViewModelRegistered) {
+    instance.registerFactory<SearchItemViewModel>(
+        () => SearchItemViewModel(instance(), instance()));
+  }
+}
+
+void initCartModule() {
+  bool isCartViewModelRegistered = GetIt.I.isRegistered<CartViewModel>();
+  if (!isCartViewModelRegistered) {
+    instance.registerFactory<CartViewModel>(() => CartViewModel(instance()));
+  }
+}
+
+void initAddressesModule() {
+  bool isAddressesViewModelRegistered =
+      GetIt.I.isRegistered<AddressesViewModel>();
+  if (!isAddressesViewModelRegistered) {
+    instance.registerFactory<AddressesViewModel>(
+        () => AddressesViewModel(instance()));
   }
 }

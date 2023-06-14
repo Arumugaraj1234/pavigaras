@@ -27,4 +27,17 @@ enum StateRendererType {
 
 enum StateRendererAction { ok, retry, success }
 
-enum HomeDataState {loading, success, error}
+enum HomeDataState { loading, success, error }
+
+enum ShopTypes { sambarKadai, maligaiKadai }
+
+extension ShopTypesExt on ShopTypes {
+  int id() {
+    switch (this) {
+      case ShopTypes.sambarKadai:
+        return 3;
+      case ShopTypes.maligaiKadai:
+        return 1; //todo: May change the value
+    }
+  }
+}

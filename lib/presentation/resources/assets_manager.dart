@@ -18,6 +18,8 @@ class ImageAssets {
   static const String locationIcon = IMAGE_PATH + "location_icon.png";
   static const String bottomNavigationHomeIcon =
       IMAGE_PATH + "bottom_home_ic.png";
+  static const String payByCashIcon = IMAGE_PATH + "cash_icon.png";
+  static const String payByOnlineIcon = IMAGE_PATH + "pay_online_icon.png";
 }
 
 class JsonAssets {
