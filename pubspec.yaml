@@ -57,6 +57,10 @@ dependencies:
   badges: ^3.0.2
   awesome_select: ^6.0.0
   geolocator: ^9.0.2
+  http: ^0.13.5
+  geocode: ^1.0.2
+  google_maps_flutter: ^2.2.5
+  app_settings: ^4.2.0
 
 dev_dependencies:
   flutter_test:
@@ -101,6 +105,9 @@ flutter:
     - assets/images/bottom_home_ic.png
     - assets/images/cash_icon.png
     - assets/images/pay_online_icon.png
+    - assets/map_style.txt
+    - assets/images/pin_grey_ic.png
+    - assets/images/google_pin_ic.png
 
   fonts:
     - family: CircularStd

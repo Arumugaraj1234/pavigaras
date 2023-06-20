@@ -15,6 +15,7 @@ import 'package:pavigaras/presentation/resources/values_manager.dart';
 
 import '../../domain/model/model.dart';
 import '../controller/cart_controller.dart';
+import '../resources/routes_manager.dart';
 import '../resources/styles_manager.dart';
 import '../state_renderer/state_renderer_implementer.dart';
 
@@ -81,17 +82,15 @@ class _AddressesViewState extends State<AddressesView> {
           permission == LocationPermission.whileInUse) {
         var currentLocation = await Geolocator.getCurrentPosition();
 
-        // Navigator.of(context)
-        //     .pushNamed(Routes.searchAddressRoute, arguments: currentLocation)
-        //     .then((value) => _viewModel.start());
+        Navigator.of(context)
+            .pushNamed(Routes.searchAddressRoute, arguments: currentLocation);
       }
     } else if (permission == LocationPermission.deniedForever) {
     } else if (permission == LocationPermission.always ||
         permission == LocationPermission.whileInUse) {
       var currentLocation = await Geolocator.getCurrentPosition();
-      // Navigator.of(context)
-      //     .pushNamed(Routes.searchAddressRoute, arguments: currentLocation)
-      //     .then((value) => _viewModel.start());
+      Navigator.of(context)
+          .pushNamed(Routes.searchAddressRoute, arguments: currentLocation);
     }
   }
 

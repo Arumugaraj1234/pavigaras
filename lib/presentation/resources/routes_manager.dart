@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:pavigaras/app/di.dart';
 import 'package:pavigaras/domain/model/model.dart';
 import 'package:pavigaras/presentation/addresses/addresses.dart';
@@ -7,6 +8,7 @@ import 'package:pavigaras/presentation/product/product.dart';
 import 'package:pavigaras/presentation/product_group/product_group.dart';
 import 'package:pavigaras/presentation/request_otp/request_otp.dart';
 import 'package:pavigaras/presentation/resources/strings_manager.dart';
+import 'package:pavigaras/presentation/search_address/search_address.dart';
 import 'package:pavigaras/presentation/shops/shops.dart';
 import 'package:pavigaras/presentation/special_product/special_product.dart';
 import 'package:pavigaras/presentation/splash/splash.dart';
@@ -23,6 +25,7 @@ class Routes {
   static const String productRoute = "/productRoute";
   static const String specialProductRoute = "/specialProductRoute";
   static const String addressesRoute = "/addressesRoute";
+  static const String searchAddressRoute = "/searchAddressRoute";
 }
 
 class RouteGenerator {
@@ -59,6 +62,12 @@ class RouteGenerator {
       case Routes.addressesRoute:
         initAddressesModule();
         return MaterialPageRoute(builder: (_) => const AddressesView());
+      case Routes.searchAddressRoute:
+        initSearchAddressModule();
+        Position currentLocation = routeSettings.arguments as Position;
+        return MaterialPageRoute(
+            builder: (_) =>
+                SearchAddressView(currentLocation: currentLocation));
       default:
         return unDefinedRoute();
     }

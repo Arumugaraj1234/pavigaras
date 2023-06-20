@@ -12,3 +12,9 @@ class VerifyOtpObject with _$VerifyOtpObject {
   factory VerifyOtpObject(RequestOtp? requestOtp, String otp) =
       _VerifyOtpObject;
 }
+
+@freezed
+class SearchAddressObject with _$SearchAddressObject {
+  factory SearchAddressObject(GoogleAddress? googleAddress, String houseNo) =
+      _SearchAddressObject;
+}

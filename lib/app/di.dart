@@ -14,6 +14,7 @@ import 'package:pavigaras/presentation/addresses/addresses_viewmodel.dart';
 import 'package:pavigaras/presentation/home/home_viewmodel.dart';
 import 'package:pavigaras/presentation/request_otp/request_otp_viewmodel.dart';
 import 'package:pavigaras/presentation/search/search_viewmodel.dart';
+import 'package:pavigaras/presentation/search_address/search_address_viewmodel.dart';
 import 'package:pavigaras/presentation/shops/shops_viewmodel.dart';
 import 'package:pavigaras/presentation/splash/splash_viewmodel.dart';
 import 'package:pavigaras/presentation/verify_otp/verify_otp_viewmodel.dart';
@@ -149,5 +150,14 @@ void initAddressesModule() {
   if (!isAddressesViewModelRegistered) {
     instance.registerFactory<AddressesViewModel>(
         () => AddressesViewModel(instance()));
+  }
+}
+
+void initSearchAddressModule() {
+  bool isSearchAddressViewModelRegistered =
+      GetIt.I.isRegistered<SearchAddressViewModel>();
+  if (!isSearchAddressViewModelRegistered) {
+    instance.registerFactory<SearchAddressViewModel>(
+        () => SearchAddressViewModel(instance()));
   }
 }

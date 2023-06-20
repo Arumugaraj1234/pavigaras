@@ -20,6 +20,8 @@ class ImageAssets {
       IMAGE_PATH + "bottom_home_ic.png";
   static const String payByCashIcon = IMAGE_PATH + "cash_icon.png";
   static const String payByOnlineIcon = IMAGE_PATH + "pay_online_icon.png";
+  static const String mapPinGreyIcon = IMAGE_PATH + "pin_grey_ic.png";
+  static const String googlePinIcon = IMAGE_PATH + "google_pin_ic.png";
 }
 
 class JsonAssets {
@@ -27,4 +29,8 @@ class JsonAssets {
   static const String error = JSON_PATH + "error.json";
   static const String loading = JSON_PATH + "loading.json";
   static const String success = JSON_PATH + "success.json";
+}
+
+class TextAssetManager {
+  static const String mapStyle = "assets/map_style.txt";
 }

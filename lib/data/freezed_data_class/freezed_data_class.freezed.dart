@@ -263,3 +263,140 @@ abstract class _VerifyOtpObject implements VerifyOtpObject {
   _$$_VerifyOtpObjectCopyWith<_$_VerifyOtpObject> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$SearchAddressObject {
+  GoogleAddress? get googleAddress => throw _privateConstructorUsedError;
+  String get houseNo => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SearchAddressObjectCopyWith<SearchAddressObject> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SearchAddressObjectCopyWith<$Res> {
+  factory $SearchAddressObjectCopyWith(
+          SearchAddressObject value, $Res Function(SearchAddressObject) then) =
+      _$SearchAddressObjectCopyWithImpl<$Res>;
+  $Res call({GoogleAddress? googleAddress, String houseNo});
+}
+
+/// @nodoc
+class _$SearchAddressObjectCopyWithImpl<$Res>
+    implements $SearchAddressObjectCopyWith<$Res> {
+  _$SearchAddressObjectCopyWithImpl(this._value, this._then);
+
+  final SearchAddressObject _value;
+  // ignore: unused_field
+  final $Res Function(SearchAddressObject) _then;
+
+  @override
+  $Res call({
+    Object? googleAddress = freezed,
+    Object? houseNo = freezed,
+  }) {
+    return _then(_value.copyWith(
+      googleAddress: googleAddress == freezed
+          ? _value.googleAddress
+          : googleAddress // ignore: cast_nullable_to_non_nullable
+              as GoogleAddress?,
+      houseNo: houseNo == freezed
+          ? _value.houseNo
+          : houseNo // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_SearchAddressObjectCopyWith<$Res>
+    implements $SearchAddressObjectCopyWith<$Res> {
+  factory _$$_SearchAddressObjectCopyWith(_$_SearchAddressObject value,
+          $Res Function(_$_SearchAddressObject) then) =
+      __$$_SearchAddressObjectCopyWithImpl<$Res>;
+  @override
+  $Res call({GoogleAddress? googleAddress, String houseNo});
+}
+
+/// @nodoc
+class __$$_SearchAddressObjectCopyWithImpl<$Res>
+    extends _$SearchAddressObjectCopyWithImpl<$Res>
+    implements _$$_SearchAddressObjectCopyWith<$Res> {
+  __$$_SearchAddressObjectCopyWithImpl(_$_SearchAddressObject _value,
+      $Res Function(_$_SearchAddressObject) _then)
+      : super(_value, (v) => _then(v as _$_SearchAddressObject));
+
+  @override
+  _$_SearchAddressObject get _value => super._value as _$_SearchAddressObject;
+
+  @override
+  $Res call({
+    Object? googleAddress = freezed,
+    Object? houseNo = freezed,
+  }) {
+    return _then(_$_SearchAddressObject(
+      googleAddress == freezed
+          ? _value.googleAddress
+          : googleAddress // ignore: cast_nullable_to_non_nullable
+              as GoogleAddress?,
+      houseNo == freezed
+          ? _value.houseNo
+          : houseNo // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SearchAddressObject implements _SearchAddressObject {
+  _$_SearchAddressObject(this.googleAddress, this.houseNo);
+
+  @override
+  final GoogleAddress? googleAddress;
+  @override
+  final String houseNo;
+
+  @override
+  String toString() {
+    return 'SearchAddressObject(googleAddress: $googleAddress, houseNo: $houseNo)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SearchAddressObject &&
+            const DeepCollectionEquality()
+                .equals(other.googleAddress, googleAddress) &&
+            const DeepCollectionEquality().equals(other.houseNo, houseNo));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(googleAddress),
+      const DeepCollectionEquality().hash(houseNo));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_SearchAddressObjectCopyWith<_$_SearchAddressObject> get copyWith =>
+      __$$_SearchAddressObjectCopyWithImpl<_$_SearchAddressObject>(
+          this, _$identity);
+}
+
+abstract class _SearchAddressObject implements SearchAddressObject {
+  factory _SearchAddressObject(
+          final GoogleAddress? googleAddress, final String houseNo) =
+      _$_SearchAddressObject;
+
+  @override
+  GoogleAddress? get googleAddress;
+  @override
+  String get houseNo;
+  @override
+  @JsonKey(ignore: true)
+  _$$_SearchAddressObjectCopyWith<_$_SearchAddressObject> get copyWith =>
+      throw _privateConstructorUsedError;
+}
